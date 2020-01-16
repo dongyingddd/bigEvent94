@@ -32,6 +32,25 @@
 </body>
 <script src="js/jquery-1.12.4.min.js"></script>
 <script>
+    var user = {
+        login: function (username, password) {
+            $.post("http://192.168.172.82:8000/admin/login", {
+                "user_name": username,
+                "password": password
+            }).then(function (res) {
+                console.log(res);
+                if (res.code === 200) {
+                    //登录成功
+                    //跳转到首页
+                    window.location.href = "./index.html"
+                } else {
+                    alert(res.msg);
+                }
+            });
+        }
+    };
+</script>
+<script>
     //给登录按钮添加点击事件
     $("#btnLogin").click(function () {
         //收集用户信息,并校验是否为空
@@ -42,19 +61,7 @@
             return;
         }
         //请求用户登录的接口
-        $.post("http://192.168.172.82:8000/admin/login", {
-            "user_name": username,
-            "password": password
-        }).then(function (res) {
-            console.log(res);
-            if (res.code === 200) {
-                //登录成功
-                //跳转到首页
-                window.location.href = "./index.html"
-            } else {
-                alert(res.msg);
-            }
-        });
+        user.login(username, password);
     });
 
 </script>
