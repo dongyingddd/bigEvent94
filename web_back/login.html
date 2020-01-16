@@ -44,7 +44,16 @@
             return;
         }
         //请求用户登录的接口
-        user.login(username, password);
+        user.login(username, password).then(function (res) {
+            console.log(res);
+            if (res.code === 200) {
+                //登录成功
+                //跳转到首页
+                window.location.href = "./index.html"
+            } else {
+                alert(res.msg);
+            }
+        });;
     });
 
 </script>
