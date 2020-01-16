@@ -2,7 +2,7 @@
 var user = {
     //用户登录
     login: function (username, password) {
-        $.post("http://192.168.172.82:8000/admin/login", {
+        $.post(APIList.user_login, {
             "user_name": username,
             "password": password
         }).then(function (res) {
@@ -18,7 +18,7 @@ var user = {
     },
     //用户登出
     logout: function () {
-        $.post("http://192.168.172.82:8000/admin/logout")
+        $.post(APIList.user_logout)
             .then(function (res) {
                 if (res.code === 200) {
                     //登出成功,回到登录页
@@ -31,7 +31,7 @@ var user = {
     //获取用户信息
     getInfo: function () {
         //请求接口地址,获取用户信息
-        $.get("http://192.168.172.82:8000/admin/getuser")
+        $.get(APIList.user_getInfo)
             .then(function (res) {
                 if (res.code === 200) {
                     //获取用户信息成功
