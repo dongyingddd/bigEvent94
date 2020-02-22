@@ -24,5 +24,8 @@ var APIList = {
     category_add: BASEURL + '/admin/category_add',
 
     //编辑文章分类
-    category_edit: BASEURL + '/admin/category_edit'
+    category_edit: BASEURL + '/admin/category_edit',
+
+    //获取文章
+    article_get: BASEURL + '/admin/search'
 };
